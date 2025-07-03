@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.postgresql:postgresql:42.7.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    implementation 'org.springframework.security:spring-security-crypto:6.1.2'
+    implementation 'ch.qos.logback:logback-classic:1.4.8'
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    
+    // Для Telegram Bot API
+    implementation 'org.telegram:telegrambots:6.7.0'
+    
+    // Для Email
+    implementation 'javax.mail:javax.mail-api:1.6.2'
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+
+    implementation 'org.opensmpp:opensmpp-core:3.0.0'
+    
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:5.4.0'
+
+
+        // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    
+    // H2 Database для тестов
+    testImplementation 'com.h2database:h2:2.1.214'
+    
+    // AssertJ для удобных assertions
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+}
+
+application {
+    mainClass = 'com.otp.Main'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
